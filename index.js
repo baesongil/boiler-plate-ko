@@ -6,8 +6,8 @@ const cookieParser = require('cookie-parser');
 
 const config = require('./config/key');
 
-const { User } = require("./models/User");
 const { auth } = require("./middleware/auth");
+const { User } = require("./models/User");
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
@@ -103,7 +103,6 @@ app.post('/api/users/login', (req, res) => {
 })
 
 app.get('/api/users/auth', auth ,(req, res) => {
-
     // 여기 까지 미들웨어를 통과해 왔다는 얘기는 Authentication 이 True 라는 의미임.
     res.status(200).json({
         _id: req.user._id,
